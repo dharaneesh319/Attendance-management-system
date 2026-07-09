@@ -1,18 +1,5 @@
 # 🎓 Smart Attendance Portal For Students
 
-<div align="center">
-
-![MIT ADT University](https://img.shields.io/badge/MIT%20ADT-University-blue?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Production-success?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
-
-**A comprehensive digital solution for university placement cells to manage attendance, assessments, coordinator activities, and seat allocations efficiently.**
-
-[Features](#-key-features) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Documentation](#-documentation)
-
-</div>
-
----
 
 ## 📋 Table of Contents
 
