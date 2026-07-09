@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand Colors - Monochrome Override */
+  --mit-purple: #18181b;
+  /* Zinc-900 */
+  --mit-gold: #71717a;
+  /* Zinc-500 */
+
+  /* Light Mode Defaults */
+  --bg-primary: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-nav: #fafafa;
+  /* Zinc-50 equivalent */
+  --text-primary: #18181b;
+  /* Zinc-900 */
+  --text-secondary: #71717a;
+  /* Zinc-500 */
+  --border-color: #e4e4e7;
+  /* Zinc-200 */
+  --input-bg: #ffffff;
+
+  /* Sidebar Specific */
+  --sidebar-active-bg: #ffffff;
+  --sidebar-active-color: #18181b;
+  --sidebar-hover-bg: #f4f4f5;
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #e4e4e7;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4d4d8;
+  }
+
+  /* Sidebar Specific */
+  --sidebar-active-bg: #f3f4f6;
+  --sidebar-active-color: var(--mit-purple);
+  --sidebar-hover-bg: #f9fafb;
+
+  /* Status Colors */
+  --success-green: #18181b;
+  /* Override success to black for strict mono, or keep distinct? User said "strictly colour theme" */
+  --error-red: #dc2626;
+
+  --font-family: 'Inter',
+  system-ui,
+  -apple-system,
+  sans-serif;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --nav-height: 64px;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --mit-purple: #8b5cf6;
+  /* Lighter purple for dark mode visibility */
+  --bg-primary: #111827;
+  --bg-card: #1f2937;
+  --bg-nav: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
+  --input-bg: #374151;
+  --sidebar-active-bg: #374151;
+  --sidebar-active-color: #ffffff;
+  --sidebar-hover-bg: #2d3748;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Layout --- */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Responsive & Default Sidebar Behavior --- */
+
+/* Sidebar hidden by default on ALL screens */
+.admin-sidebar {
+  width: 260px;
+  background-color: var(--bg-nav);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+  /* Hidden by default */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-sidebar.open {
+  transform: translateX(0);
+  /* Shown when toggled */
+}
+
+/* Main content takes full width by default */
+.admin-main {
+  flex: 1;
+  margin-left: 0;
+  /* Full width */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Menu button always visible */
+.mobile-menu-btn {
+  display: block;
+  border: none;
+  background: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+/* Overlay always available when sidebar is open */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+/* --- Standard UI Components --- */
+
+.mit-container {
+  padding: 2rem;
+  max-width: 1400px;
+  /* Wider for enterprise table views */
+  margin: 0 auto;
+}
+
+.mit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  /* Standard 8px radius */
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.mit-btn {
+  background-color: var(--mit-purple);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.mit-btn:hover {
+  opacity: 0.9;
+}
+
+.mit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mit-input {
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+}
+
+.mit-input:focus {
+  outline: none;
+  border-color: var(--mit-purple);
+  box-shadow: 0 0 0 2px rgba(75, 44, 131, 0.1);
+}
+
+/* Utility Classes */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* GLOBAL INPUT OVERRIDE to fix invisible text */
+input,
+textarea,
+select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  color: #000000 !important;
+  /* Force Pure Black Text */
+  background-color: #ffffff !important;
+  /* Force Pure White Background */
+  border-color: #e4e4e7 !important;
+  /* Force Light Border */
+  -webkit-text-fill-color: #000000 !important;
+  opacity: 1 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #71717a !important;
+  /* Zinc-500 */
+  opacity: 1 !important;
+  -webkit-text-fill-color: #71717a !important;
+}

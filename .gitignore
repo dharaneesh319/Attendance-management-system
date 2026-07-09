@@ -1,0 +1,29 @@
+node_modules/
+.env
+.env.*
+dist/
+build/
+*.log
+.DS_Store
+coverage/
+
+# Supabase secrets
+.env.local
+
+# Railway (deprecated)
+railway.json
+
+# Debug & Temporary Scripts
+check_*.js
+debug_*.js
+*.txt
+diag.txt
+get_logo_base64.js
+cleanup.sh
+
+# Temporary files
+temp/
+
+# Test outputs
+test_output.pdf
+api_*.json
